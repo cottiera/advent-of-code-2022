@@ -27,19 +27,26 @@ scissors = 3
 
 # Create Dictionary
 scores = {
-        "X": rock,
-        "Y": paper,
-        "Z": scissors,
+       #  "X": rock,
+       #  "Y": paper,
+       #  "Z": scissors,
         "A": rock,
         "B": paper,
-        "C": scissors
+        "C": scissors,
+
+       # PART II:
+        "X": loss,
+        "Y": draw, 
+        "Z": win
         }
 
 inp_file = open("advent_day_2.txt", "r")
 lines = inp_file.readlines()
 score = 0
 
+# Part I commented for Part II !
 
+"""
 for line in lines:
     line.strip()
     line.split()
@@ -58,3 +65,28 @@ for line in lines:
         score += 0
 
 print(score)
+"""
+
+for line in lines:
+    line.strip()
+    line.split()
+    score += scores[line[2]]
+
+    if line[2] == "Y":
+        score += scores[line[0]]
+
+    elif line[2] == "X":
+        if line[0] == "A":
+            score += scores["C"]
+        else:
+            score += (scores[line[0]]) - 1
+
+    elif line[2] == "Z":
+        if line[0] == "C":
+            score += scores["A"]
+        else:
+            score += (scores[line[0]]) + 1
+
+print(score)
+
+

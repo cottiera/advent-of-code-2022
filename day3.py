@@ -11,27 +11,30 @@ lines = inp_txt.readlines()
 priorities = {}
 priority_score = 0
 
-Debug = False  # Debug to check dictionary execution
+Debug = True  # Debug to check dictionary execution
 
-for j in range(97,123)
-    priorities[chr(j)].append(int(j - 96))
-
-
-for k in range(65,91):
-    priorities[chr(k)].append(int(k - 38))
-
-print(priorities)
+for j in range(97,123):  # appends lowercase alphabet to dictionary
+    priorities[chr(j)] = (int(j - 96))
 
 
-if Debug
+for k in range(65,91):  # appends uppercase alphabet to dictionary 
+    priorities[chr(k)] = (int(k - 38))
+
+# Checks that dictionary is correct
+# print(priorities) 
+
+
+if Debug:
 
     for line in lines:
         line.strip()
-        split_rucksack = len(line) / 2
-        compartment_1 = line[0:split_rucksack]
-        compartment_2 = line[split_rucksack + 1:]
-        for item in compartment_1:
-            if item in compartment_2:
-                priority_score += pritorities[item]
+        split_rucksack = int(len(line) / 2)
+        compartment_1 = line[0:split_rucksack  # split string into two rucksacks 
+        compartment_2 = line[split_rucksack::]  
+        for letter in compartment_1:  
+            if letter in compartment_2:  # checks for duplicate
+                priority_score += priorities[letter] # add priority value
+                break  # break when duplicate is found so no double counting occurs
 
-    print(priority_score)
+    
+    print(priority_score) 
